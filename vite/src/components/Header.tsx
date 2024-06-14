@@ -1,25 +1,43 @@
-import { Button, Flex, Image } from "@chakra-ui/react";
-import { FC } from "react";
+import { Button, Flex } from "@chakra-ui/react";
+import { ethers } from "ethers";
+import { JsonRpcSigner } from "ethers";
+import { Dispatch, FC, SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Header: FC = () => {
+interface HeaderProps {
+  signer: JsonRpcSigner | null;
+  setSigner: Dispatch<SetStateAction<JsonRpcSigner | null>>;
+}
+
+const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
   const navigate = useNavigate();
+  const onClickMetamask = async () => {
+    try {
+      if (!window.ethereum) return;
+
+      const provider = new ethers.BrowserProvider(window.ethereum);
+
+      setSigner(await provider.getSigner());
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <Flex bgColor="blue.100" h={24} justifyContent="space-between">
+    <Flex bgColor="black" h={24} justifyContent="space-between">
       <Flex
-        bgColor="red.100"
         w={40}
         fontSize={20}
         fontWeight="semibold"
         alignItems="center"
+        textColor="white"
       >
-        My First NFT
+        BCS5mon
       </Flex>
-      <Flex bgColor="red.100" alignItems="center" gap={4}>
+      <Flex bgColor="black" alignItems="center" gap={4}>
         <Button
           variant="link"
-          colorScheme="black"
+          textColor="white"
           onClick={() => navigate("/")}
           w={20}
         >
@@ -27,7 +45,7 @@ const Header: FC = () => {
         </Button>
         <Button
           variant="link"
-          colorScheme="black"
+          textColor="white"
           onClick={() => navigate("/mint-nft")}
           w={20}
         >
@@ -35,7 +53,7 @@ const Header: FC = () => {
         </Button>
         <Button
           variant="link"
-          colorScheme="black"
+          textColor="white"
           onClick={() => navigate("/my-nft")}
           w={20}
         >
@@ -43,15 +61,19 @@ const Header: FC = () => {
         </Button>
         <Button
           variant="link"
-          colorScheme="black"
+          textColor="white"
           onClick={() => navigate("/sale-nft")}
           w={20}
         >
           Market
         </Button>
       </Flex>
-      <Flex bgColor="red.100" w={40} justifyContent="end" alignItems="center">
-        <Button>Connect Wallet</Button>
+      <Flex bgColor="black" w={40} justifyContent="end" alignItems="center">
+        {signer ? (
+          <Button>{signer.address}</Button>
+        ) : (
+          <Button onClick={onClickMetamask}>🦊 메마로그인</Button>
+        )}
       </Flex>
     </Flex>
   );
