@@ -31,6 +31,7 @@ const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
         fontWeight="semibold"
         alignItems="center"
         textColor="white"
+        fontFamily="cursive"
       >
         BCS5mon
       </Flex>
@@ -40,6 +41,7 @@ const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
           textColor="white"
           onClick={() => navigate("/")}
           w={20}
+          fontFamily="initial"
         >
           Home
         </Button>
@@ -48,6 +50,7 @@ const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
           textColor="white"
           onClick={() => navigate("/mint-nft")}
           w={20}
+          fontFamily="initial"
         >
           Minting
         </Button>
@@ -56,6 +59,7 @@ const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
           textColor="white"
           onClick={() => navigate("/my-nft")}
           w={20}
+          fontFamily="initial"
         >
           My NFT
         </Button>
@@ -64,6 +68,7 @@ const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
           textColor="white"
           onClick={() => navigate("/sale-nft")}
           w={20}
+          fontFamily="initial"
         >
           Market
         </Button>
@@ -72,7 +77,9 @@ const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
         {signer ? (
           <Button>{signer.address}</Button>
         ) : (
-          <Button onClick={onClickMetamask}>🦊 메마로그인</Button>
+          <Button onClick={onClickMetamask} bgColor="black" textColor="white">
+            Connect Wallet
+          </Button>
         )}
       </Flex>
     </Flex>

@@ -107,6 +107,14 @@
 		"remappings": []
 	},
 	"sources": {
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
+				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
 		"@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
 			"keccak256": "0x60c65f701957fdd6faea1acb0bb45825791d473693ed9ecb34726fdfaa849dd7",
 			"license": "MIT",
@@ -212,11 +220,11 @@
 			]
 		},
 		"contracts/MintNFT.sol": {
-			"keccak256": "0x6529d66a18467ed9112dab75f4f8435117dee51aacb996968a3c1e87b0137db3",
+			"keccak256": "0x329937ca3df87a8e8c87e8edc654ee896d60a124dd97fbf52da052fe42431063",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b257fc8abd06be483651db6624ac184dfb6b748ca71c76a6c56bb0130eebd6a9",
-				"dweb:/ipfs/QmPRgmYdgAZ5H55wXT6ZZE7vSnHd9n8CAxBRHg1KD6vtft"
+				"bzz-raw://2aeb9b5b33e177e2034bd981df29b66e4f43a533a178529c3bcaae4e923b446d",
+				"dweb:/ipfs/QmcUDGjrt1pay3mPNvDcYGvu2t4RpuMnxVDLRUmYAo4r2W"
 			]
 		},
 		"contracts/SaleNFt.sol": {

@@ -17,7 +17,7 @@ contract MintNft is ERC721Enumerable, Ownable {
     }
 
     function mintNft() public onlyOwner {
-        require(totalSupply() < 9, "No more mint.");
+        require(totalSupply() < 100, "No more mint.");
 
         uint tokenId = totalSupply() + 1;
 

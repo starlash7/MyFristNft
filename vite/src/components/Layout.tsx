@@ -7,9 +7,9 @@ import { JsonRpcSigner } from "ethers";
 const Layout: FC = () => {
   const [signer, setSigner] = useState<JsonRpcSigner | null>(null);
   return (
-    <Flex bgColor="red.100" maxW={768} mx="auto" minH="100vh" flexDir="column">
+    <Flex maxW={768} mx="auto" minH="100vh" flexDir="column">
       <Header signer={signer} setSigner={setSigner} />
-      <Flex bgColor="green.100" flexGrow={1}>
+      <Flex bgColor="gray.100" flexGrow={1}>
         <Outlet />
       </Flex>
     </Flex>
