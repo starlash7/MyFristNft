@@ -798,7 +798,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/MintNft.sol": "MintNft"
+			"MintNft.sol": "MintNft"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -924,7 +924,7 @@
 				"dweb:/ipfs/QmVBEei6aTnvYNZp2CHYVNKyZS4q1KkjANfY39WVXZXVoT"
 			]
 		},
-		"contracts/MintNft.sol": {
+		"MintNft.sol": {
 			"keccak256": "0xc4c9555d66d376b4df6be9b6662a0e1cd5847148918152bc48a01d00a923ad85",
 			"license": "MIT",
 			"urls": [
