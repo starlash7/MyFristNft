@@ -1,15 +1,27 @@
-import { Button, Flex } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  Image,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
 import { ethers } from "ethers";
+import { Contract } from "ethers";
 import { JsonRpcSigner } from "ethers";
-import { Dispatch, FC, SetStateAction } from "react";
+
+import { Dispatch, FC, SetStateAction, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import mintAbi from "../abis/mintAbi.json";
 
 interface HeaderProps {
   signer: JsonRpcSigner | null;
   setSigner: Dispatch<SetStateAction<JsonRpcSigner | null>>;
 }
+setMintContract: Dispatch<SetStateAction<Contract | null>>;
 
-const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
+const Header: FC<HeaderProps> = ({ signer, setSigner, setMintContract }) => {
   const navigate = useNavigate();
   const onClickMetamask = async () => {
     try {
@@ -22,25 +34,41 @@ const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
       console.error(error);
     }
   };
+  useEffect(() => {
+    if (!signer) {
+      setMintContract(null);
+
+      return;
+    }
+
+    setMintContract(
+      new Contract(
+        "0x244D4258BcE76896dF7aA80c8FfDC8b6E4BEE37a",
+        mintAbi,
+        signer
+      )
+    );
+  }, [signer]);
 
   return (
     <Flex bgColor="black" h={24} justifyContent="space-between">
       <Flex
         w={40}
-        fontSize={20}
+        fontSize={[16, 16, 20]}
         fontWeight="semibold"
+        flexDir={["column", "column", "row"]}
         alignItems="center"
         textColor="white"
         fontFamily="cursive"
       >
         BCS5mon
       </Flex>
-      <Flex bgColor="black" alignItems="center" gap={4}>
+      <Flex bgColor="black" alignItems="center" gap={[2, 2, 4]}>
         <Button
           variant="link"
           textColor="white"
           onClick={() => navigate("/")}
-          w={20}
+          size={["xs", "xs", "md"]}
           fontFamily="initial"
         >
           Home
@@ -49,7 +77,7 @@ const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
           variant="link"
           textColor="white"
           onClick={() => navigate("/mint-nft")}
-          w={20}
+          size={["xs", "xs", "md"]}
           fontFamily="initial"
         >
           Minting
@@ -58,7 +86,7 @@ const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
           variant="link"
           textColor="white"
           onClick={() => navigate("/my-nft")}
-          w={20}
+          size={["xs", "xs", "md"]}
           fontFamily="initial"
         >
           My NFT
@@ -67,7 +95,7 @@ const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
           variant="link"
           textColor="white"
           onClick={() => navigate("/sale-nft")}
-          w={20}
+          size={["xs", "xs", "md"]}
           fontFamily="initial"
         >
           Market
@@ -75,10 +103,20 @@ const Header: FC<HeaderProps> = ({ signer, setSigner }) => {
       </Flex>
       <Flex bgColor="black" w={40} justifyContent="end" alignItems="center">
         {signer ? (
-          <Button>{signer.address}</Button>
+          <Menu>
+            <MenuButton size={["xs", "xs", "md"]} as={Button}>
+              {signer.address.substring(0, 5)}...
+              {signer.address.substring(signer.address.length - 5)}
+            </MenuButton>
+            <MenuList minW={[20, 20, 40]}>
+              <MenuItem fontSize={[8, 8, 12]} onClick={() => setSigner(null)}>
+                Log Out
+              </MenuItem>
+            </MenuList>
+          </Menu>
         ) : (
-          <Button onClick={onClickMetamask} bgColor="black" textColor="white">
-            Connect Wallet
+          <Button onClick={onClickMetamask} size={["xs", "xs", "md"]}>
+            🦊 메마로그인
           </Button>
         )}
       </Flex>
