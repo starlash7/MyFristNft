@@ -7,22 +7,34 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
-import { ethers } from "ethers";
-import { Contract } from "ethers";
 import { JsonRpcSigner } from "ethers";
-
+import { Contract } from "ethers";
+import { ethers } from "ethers";
 import { Dispatch, FC, SetStateAction, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import mintAbi from "../abis/mintAbi.json";
+import saleAbi from "../abis/saleAbi.json";
+import {
+  mintContractAddress,
+  saleContractAddress,
+} from "../abis/contractAddress";
 
 interface HeaderProps {
   signer: JsonRpcSigner | null;
   setSigner: Dispatch<SetStateAction<JsonRpcSigner | null>>;
+  setMintContract: Dispatch<SetStateAction<Contract | null>>;
+  setSaleContract: Dispatch<SetStateAction<Contract | null>>;
 }
-setMintContract: Dispatch<SetStateAction<Contract | null>>;
 
-const Header: FC<HeaderProps> = ({ signer, setSigner, setMintContract }) => {
+const Header: FC<HeaderProps> = ({
+  signer,
+  setSigner,
+  setMintContract,
+  setSaleContract,
+}) => {
   const navigate = useNavigate();
+
   const onClickMetamask = async () => {
     try {
       if (!window.ethereum) return;
@@ -34,6 +46,7 @@ const Header: FC<HeaderProps> = ({ signer, setSigner, setMintContract }) => {
       console.error(error);
     }
   };
+
   useEffect(() => {
     if (!signer) {
       setMintContract(null);
@@ -41,67 +54,56 @@ const Header: FC<HeaderProps> = ({ signer, setSigner, setMintContract }) => {
       return;
     }
 
-    setMintContract(
-      new Contract(
-        "0x417Fb110656950505cd41D817EdE0a5A8c421f86",
-        mintAbi,
-        signer
-      )
-    );
+    setMintContract(new Contract(mintContractAddress, mintAbi, signer));
+    setSaleContract(new Contract(saleContractAddress, saleAbi, signer));
   }, [signer]);
 
   return (
-    <Flex bgColor="black" h={24} justifyContent="space-between">
+    <Flex h={24} justifyContent="space-between">
       <Flex
+        flexDir={["column", "column", "row"]}
         w={40}
         fontSize={[16, 16, 20]}
         fontWeight="semibold"
-        flexDir={["column", "column", "row"]}
         alignItems="center"
-        textColor="white"
-        fontFamily="cursive"
       >
-        BCS5mon
+        <Image w={16} src="/images/logo.svg" alt="슬라임 월드" /> 슬라임 월드
       </Flex>
-      <Flex bgColor="black" alignItems="center" gap={[2, 2, 4]}>
+      <Flex alignItems="center" gap={[2, 2, 4]}>
         <Button
           variant="link"
-          textColor="white"
+          colorScheme="green"
           onClick={() => navigate("/")}
           size={["xs", "xs", "md"]}
-          fontFamily="initial"
         >
-          Home
+          홈
         </Button>
         <Button
           variant="link"
-          textColor="white"
+          colorScheme="green"
           onClick={() => navigate("/mint-nft")}
           size={["xs", "xs", "md"]}
-          fontFamily="initial"
         >
-          Minting
+          민팅
         </Button>
         <Button
           variant="link"
-          textColor="white"
+          colorScheme="green"
           onClick={() => navigate("/my-nft")}
           size={["xs", "xs", "md"]}
-          fontFamily="initial"
         >
-          My NFT
+          내 NFT
         </Button>
         <Button
           variant="link"
-          textColor="white"
+          colorScheme="green"
           onClick={() => navigate("/sale-nft")}
           size={["xs", "xs", "md"]}
-          fontFamily="initial"
         >
-          Market
+          마켓
         </Button>
       </Flex>
-      <Flex bgColor="black" w={40} justifyContent="end" alignItems="center">
+      <Flex w={40} justifyContent="end" alignItems="center">
         {signer ? (
           <Menu>
             <MenuButton size={["xs", "xs", "md"]} as={Button}>

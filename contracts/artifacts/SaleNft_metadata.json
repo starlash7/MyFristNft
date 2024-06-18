@@ -93,7 +93,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/SaleNFt.sol": "SaleNft"
+			"SaleNFt.sol": "SaleNft"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -107,14 +107,6 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/access/Ownable.sol": {
-			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
-				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
-			]
-		},
 		"@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
 			"keccak256": "0x60c65f701957fdd6faea1acb0bb45825791d473693ed9ecb34726fdfaa849dd7",
 			"license": "MIT",
@@ -219,15 +211,15 @@
 				"dweb:/ipfs/QmVBEei6aTnvYNZp2CHYVNKyZS4q1KkjANfY39WVXZXVoT"
 			]
 		},
-		"contracts/MintNFT.sol": {
-			"keccak256": "0x329937ca3df87a8e8c87e8edc654ee896d60a124dd97fbf52da052fe42431063",
+		"MintNFT.sol": {
+			"keccak256": "0x9f6ced70e3790e309cfcadb3f9d344b9de5d4b9e720abbda25f02804aeb38f1b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2aeb9b5b33e177e2034bd981df29b66e4f43a533a178529c3bcaae4e923b446d",
-				"dweb:/ipfs/QmcUDGjrt1pay3mPNvDcYGvu2t4RpuMnxVDLRUmYAo4r2W"
+				"bzz-raw://fdebacb1a9cf73b0e942a458bf6ddc67c373d7b03c69fe241e1de3852aaf0fee",
+				"dweb:/ipfs/QmZPay2U6xvRgmpHWJrMh2XVX9JJzD82mJFRkLET6DZqgi"
 			]
 		},
-		"contracts/SaleNFt.sol": {
+		"SaleNFt.sol": {
 			"keccak256": "0x789760ff7351aedd6ec29842c1768ea1ec3e512fabd4d674b5d7a0c879bb76e0",
 			"license": "MIT",
 			"urls": [

@@ -1,8 +1,8 @@
 import { Button, Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { FC, useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import { OutletContext } from "../components/Layout";
 import axios from "axios";
+import { OutletContext } from "../components/Layout";
 import MintModal from "../components/MintModal";
 
 const MintNft: FC = () => {
@@ -57,7 +57,7 @@ const MintNft: FC = () => {
           isLoading={isLoading}
           loadingText="로딩중"
         >
-          Mint!
+          민팅하기
         </Button>
       </Flex>
       <MintModal isOpen={isOpen} onClose={onClose} nftMetadata={nftMetadata} />
