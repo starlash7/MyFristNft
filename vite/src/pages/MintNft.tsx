@@ -57,7 +57,7 @@ const MintNft: FC = () => {
           isLoading={isLoading}
           loadingText="로딩중"
         >
-          민팅하기
+          Mint!
         </Button>
       </Flex>
       <MintModal isOpen={isOpen} onClose={onClose} nftMetadata={nftMetadata} />

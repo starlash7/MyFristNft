@@ -16,7 +16,7 @@ contract MintNft is ERC721Enumerable {
     }
 
     function mintNft() public {
-        require(totalSupply() < 100, "No more mint.");
+        require(totalSupply() < 20, "No more mint.");
 
         uint tokenId = totalSupply()  + 1;
 
