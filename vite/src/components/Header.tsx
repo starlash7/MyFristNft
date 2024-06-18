@@ -1,7 +1,6 @@
 import {
   Button,
   Flex,
-  Image,
   Menu,
   MenuButton,
   MenuItem,
@@ -59,48 +58,54 @@ const Header: FC<HeaderProps> = ({
   }, [signer]);
 
   return (
-    <Flex h={24} justifyContent="space-between">
+    <Flex h={24} justifyContent="space-between" bgColor="black">
       <Flex
         flexDir={["column", "column", "row"]}
         w={40}
         fontSize={[16, 16, 20]}
         fontWeight="semibold"
         alignItems="center"
+        textColor="white"
+        fontFamily="cursive"
       >
-        <Image w={16} src="/images/logo.svg" alt="슬라임 월드" /> 슬라임 월드
+        ETH World
       </Flex>
       <Flex alignItems="center" gap={[2, 2, 4]}>
         <Button
           variant="link"
-          colorScheme="green"
           onClick={() => navigate("/")}
           size={["xs", "xs", "md"]}
+          textColor="white"
+          fontFamily="initial"
         >
-          홈
+          Home
         </Button>
         <Button
           variant="link"
-          colorScheme="green"
           onClick={() => navigate("/mint-nft")}
           size={["xs", "xs", "md"]}
+          textColor="white"
+          fontFamily="initial"
         >
-          민팅
+          Minting
         </Button>
         <Button
           variant="link"
-          colorScheme="green"
           onClick={() => navigate("/my-nft")}
           size={["xs", "xs", "md"]}
+          textColor="white"
+          fontFamily="initial"
         >
-          내 NFT
+          My NFT
         </Button>
         <Button
           variant="link"
-          colorScheme="green"
           onClick={() => navigate("/sale-nft")}
           size={["xs", "xs", "md"]}
+          textColor="white"
+          fontFamily="initial"
         >
-          마켓
+          Market
         </Button>
       </Flex>
       <Flex w={40} justifyContent="end" alignItems="center">
@@ -117,8 +122,12 @@ const Header: FC<HeaderProps> = ({
             </MenuList>
           </Menu>
         ) : (
-          <Button onClick={onClickMetamask} size={["xs", "xs", "md"]}>
-            🦊 메마로그인
+          <Button
+            onClick={onClickMetamask}
+            size={["xs", "xs", "md"]}
+            fontFamily="serif"
+          >
+            🦊 Connect Wallet
           </Button>
         )}
       </Flex>
