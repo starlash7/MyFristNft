@@ -99,7 +99,14 @@ const SaleNftCard: FC<SaleNftCardProps> = ({
           />
           <Popover>
             <PopoverTrigger>
-              <Button mt={4} fontSize={24} fontWeight="semibold" variant="link">
+              <Button
+                mt={4}
+                fontSize={24}
+                fontWeight="semibold"
+                variant="link"
+                fontFamily="cursive"
+                textColor="black"
+              >
                 {nftMetadata.name}
               </Button>
             </PopoverTrigger>
@@ -111,8 +118,8 @@ const SaleNftCard: FC<SaleNftCardProps> = ({
           </Popover>
           <Flex flexWrap="wrap" mt={4} gap={2}>
             {nftMetadata.attributes?.map((w, j) => (
-              <Box key={j} border="2px solid olive" p={1}>
-                <Text borderBottom="2px solid olive">{w.trait_type}</Text>
+              <Box key={j} border="2px solid pink" p={1}>
+                <Text borderBottom="2px solid pink">{w.trait_type}</Text>
                 <Text>{w.value}</Text>
               </Box>
             ))}
@@ -123,15 +130,15 @@ const SaleNftCard: FC<SaleNftCardProps> = ({
                 <Text>{formatEther(nftMetadata.price)} ETH</Text>
                 <Button
                   ml={2}
-                  colorScheme="pink"
+                  colorScheme="green"
                   onClick={onClickPurchaseNft}
                   isDisabled={
                     isLoading || nftMetadata.tokenOwner === signer?.address
                   }
                   isLoading={isLoading}
-                  loadingText="로딩중"
+                  loadingText="Loading..."
                 >
-                  구매
+                  Buy
                 </Button>
               </>
             ) : (

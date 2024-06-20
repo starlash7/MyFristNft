@@ -25,7 +25,7 @@ const MintModal: FC<MintModalProps> = ({ isOpen, onClose, nftMetadata }) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>민팅 성공!</ModalHeader>
+        <ModalHeader>Minting Success</ModalHeader>
         <ModalCloseButton />
         <ModalBody display="flex" flexDir="column">
           <Image
@@ -41,8 +41,8 @@ const MintModal: FC<MintModalProps> = ({ isOpen, onClose, nftMetadata }) => {
           <Text mt={4}>{nftMetadata?.description}</Text>
           <Flex flexWrap="wrap" mt={4} gap={2}>
             {nftMetadata?.attributes?.map((v, i) => (
-              <Box key={i} border="2px solid olive" p={1}>
-                <Text borderBottom="2px solid olive">{v.trait_type}</Text>
+              <Box key={i} border="2px solid pink" p={1}>
+                <Text borderBottom="2px solid pink">{v.trait_type}</Text>
                 <Text>{v.value}</Text>
               </Box>
             ))}
@@ -50,7 +50,7 @@ const MintModal: FC<MintModalProps> = ({ isOpen, onClose, nftMetadata }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={onClose}>
+          <Button bgColor="black" mr={3} onClick={onClose} textColor="white">
             Close
           </Button>
         </ModalFooter>

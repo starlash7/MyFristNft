@@ -50,14 +50,16 @@ const MintNft: FC = () => {
         flexDir="column"
         gap={2}
       >
-        {!signer && <Text>🦊 메타마스크 로그인이 필요합니다!</Text>}
+        {!signer && <Text>Metamask login required</Text>}
         <Button
           onClick={onClickMint}
           isDisabled={!signer}
           isLoading={isLoading}
-          loadingText="로딩중"
+          loadingText="Loading.."
+          bgColor="black"
+          textColor="white"
         >
-          민팅하기
+          Minting
         </Button>
       </Flex>
       <MintModal isOpen={isOpen} onClose={onClose} nftMetadata={nftMetadata} />

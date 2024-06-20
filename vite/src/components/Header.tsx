@@ -76,7 +76,7 @@ const Header: FC<HeaderProps> = ({
           onClick={() => navigate("/")}
           size={["xs", "xs", "md"]}
           textColor="white"
-          fontFamily="initial"
+          fontFamily="cursive"
         >
           Home
         </Button>
@@ -85,7 +85,7 @@ const Header: FC<HeaderProps> = ({
           onClick={() => navigate("/mint-nft")}
           size={["xs", "xs", "md"]}
           textColor="white"
-          fontFamily="initial"
+          fontFamily="cursive"
         >
           Minting
         </Button>
@@ -94,7 +94,7 @@ const Header: FC<HeaderProps> = ({
           onClick={() => navigate("/my-nft")}
           size={["xs", "xs", "md"]}
           textColor="white"
-          fontFamily="initial"
+          fontFamily="cursive"
         >
           My NFT
         </Button>
@@ -103,7 +103,7 @@ const Header: FC<HeaderProps> = ({
           onClick={() => navigate("/sale-nft")}
           size={["xs", "xs", "md"]}
           textColor="white"
-          fontFamily="initial"
+          fontFamily="cursive"
         >
           Market
         </Button>

@@ -6,7 +6,7 @@ import axios from "axios";
 import { saleContractAddress } from "../abis/contractAddress";
 import NftCard from "../components/NftCard";
 
-const PAGE = 3;
+const PAGE = 4;
 
 const MyNft: FC = () => {
   const [nftMetadataArray, setNftMetadataArray] = useState<NftMetadata[]>([]);
@@ -126,19 +126,24 @@ const MyNft: FC = () => {
     <Flex w="100%" alignItems="center" flexDir="column" gap={2} mt={8} mb={20}>
       {signer ? (
         <>
-          <Flex alignItems="center" gap={2}>
-            <Text>판매 권한 : {isApprovedForAll ? "승인" : "거부"}</Text>
+          <Flex alignItems="center" gap={2} fontFamily="monospace">
+            <Text fontSize={20}>
+              판매를 허가하시겠습니까? :{" "}
+              {isApprovedForAll ? "Approval" : "Reject"}
+            </Text>
             <Button
               colorScheme={isApprovedForAll ? "red" : "green"}
               onClick={onClickSetApprovalForAll}
               isDisabled={isApproveLoading}
               isLoading={isApproveLoading}
-              loadingText="로딩중"
+              loadingText="Loading..."
             >
-              {isApprovedForAll ? "취소" : "승인"}
+              {isApprovedForAll ? "Reject" : "Approval"}
             </Button>
           </Flex>
-          {balanceOf !== 0 && <Text>내 보유 NFT 갯수 : {balanceOf}</Text>}
+          {balanceOf !== 0 && (
+            <Text fontSize={20}>내가 보유한 NFT : {balanceOf}</Text>
+          )}
           <Grid
             templateColumns={[
               "repeat(1, 1fr)",
@@ -163,14 +168,16 @@ const MyNft: FC = () => {
               onClick={() => getNftMetadata()}
               isDisabled={isLoading}
               isLoading={isLoading}
-              loadingText="로딩중"
+              loadingText="Loading..."
+              bgColor="black"
+              textColor="white"
             >
               더 보기
             </Button>
           )}
         </>
       ) : (
-        <Text>🦊 메타마스크 로그인이 필요합니다!</Text>
+        <Text>Metamask login required</Text>
       )}
     </Flex>
   );

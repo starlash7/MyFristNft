@@ -83,7 +83,14 @@ const NftCard: FC<NftCardProps> = ({
       />
       <Popover>
         <PopoverTrigger>
-          <Button mt={4} fontSize={24} fontWeight="semibold" variant="link">
+          <Button
+            mt={4}
+            fontSize={24}
+            fontWeight="semibold"
+            variant="link"
+            fontFamily="cursive"
+            textColor="black"
+          >
             {nftMetadata.name}
           </Button>
         </PopoverTrigger>
@@ -95,8 +102,8 @@ const NftCard: FC<NftCardProps> = ({
       </Popover>
       <Flex flexWrap="wrap" mt={4} gap={2}>
         {nftMetadata.attributes?.map((w, j) => (
-          <Box key={j} border="2px solid olive" p={1}>
-            <Text borderBottom="2px solid olive">{w.trait_type}</Text>
+          <Box key={j} border="2px solid pink" p={1}>
+            <Text borderBottom="2px solid pink">{w.trait_type}</Text>
             <Text>{w.value}</Text>
           </Box>
         ))}
@@ -113,16 +120,21 @@ const NftCard: FC<NftCardProps> = ({
                 textAlign="right"
                 isDisabled={isLoading}
               />
-              <InputRightAddon>ETH</InputRightAddon>
+              <InputRightAddon bgColor="black" textColor="white">
+                ETH
+              </InputRightAddon>
             </InputGroup>
             <Button
               ml={2}
               onClick={onClickSetForSaleNft}
               isDisabled={isLoading}
               isLoading={isLoading}
-              loadingText="로딩중"
+              loadingText="Loading..."
+              bgColor="black"
+              textColor="white"
+              fontFamily="-moz-initial"
             >
-              등록
+              Registration
             </Button>
           </>
         ) : (
